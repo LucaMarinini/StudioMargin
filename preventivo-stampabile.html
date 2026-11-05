@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Preventivo stampabile A4 — StudioMargin</title>
+<style>
+:root{--navy:#143436;--teal:#148077;--pale:#ecf5f0;--edge:#d2e1dc}*{box-sizing:border-box}
+body{margin:0;background:#f0f3f1;color:var(--navy);font:14px/1.45 system-ui,Arial,sans-serif}
+.toolbar{max-width:910px;margin:28px auto;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:0 10px}
+button,.link{font:inherit;background:var(--navy);color:white;padding:10px 15px;border:0;border-radius:7px;cursor:pointer;text-decoration:none}
+.link{background:#dbe9e3;color:var(--navy)}.toolbar .right{display:flex;gap:8px}
+.sheet{width:210mm;min-height:297mm;margin:0 auto 30px;background:white;padding:16mm 14mm 14mm;box-shadow:0 10px 30px #1234}
+h1{font-size:28px;letter-spacing:-.035em;margin:0}.brand{background:var(--navy);color:white;padding:17px 20px;margin-bottom:20px}.brand small{color:#b4dbcf}.muted{font-size:12px;color:#63756f}.top{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}.top strong{display:block;font-size:12px;color:var(--teal);margin-bottom:7px}
+[contenteditable]{outline:none;min-height:1.45em} [contenteditable]:focus{background:#fff6d6}
+.area{min-height:30px;padding:2px 0;border-bottom:1px dotted var(--edge)}
+label{font-size:11px;font-weight:700;color:#54716c}input{font:inherit;max-width:100%;padding:5px;border:1px solid #bed3ca;border-radius:4px;background:#fffcf1}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0 18px}.meta input{width:100%}
+h2{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--teal);border-bottom:2px solid var(--teal);padding-bottom:5px;margin:22px 0 8px}
+table{border-collapse:collapse;width:100%;table-layout:fixed}th{background:#e1eee9;font-size:11px;text-align:left;color:var(--navy);padding:8px 5px}td{border-bottom:1px solid #e4ece8;padding:6px 4px;vertical-align:middle}
+td input{font-size:12px;width:100%;padding:4px 3px}td.desc{width:39%}td.qty{width:9%}td.unit{width:9%}td.price{width:16%}td.disc{width:12%}td.amount{width:15%;text-align:right;font-size:12px;white-space:nowrap}
+.totals{margin:14px 0 0 auto;width:48%;display:grid;grid-template-columns:1fr 110px;gap:3px 12px;align-items:center}.totals input{width:60px;text-align:right}.totals strong{padding-top:8px;border-top:2px solid var(--teal);font-size:17px}.totals .right{text-align:right}
+.notes{min-height:58px;border:1px solid #e0ebe6;background:#f9fbfa;padding:10px;font-size:12px}.warn{font-size:11px;color:#805e1e;background:#fff7e8;padding:9px;margin:18px 0}
+.footer{display:flex;justify-content:space-between;gap:18px;margin-top:22px;font-size:11px;color:#6b7e76}
+@media(max-width:850px){.sheet{width:100%;min-height:0;box-shadow:none;padding:24px 17px}.toolbar{padding:0 15px}.top{gap:12px}.totals{width:65%}}
+@media print{@page{size:A4 portrait;margin:0}body{background:#fff;print-color-adjust:exact;-webkit-print-color-adjust:exact}.toolbar,.warn{display:none!important}.sheet{width:210mm;min-height:297mm;box-shadow:none;margin:0;padding:16mm 14mm 14mm;break-after:page}input{background:transparent;border:0;padding:0;color:#172f2c}input::-webkit-inner-spin-button{-webkit-appearance:none} [contenteditable]{border:0!important}.notes{background:#f8faf8}.footer{margin-top:16px}h2,table,.totals,.top{break-inside:avoid}}
+</style></head>
+<body><div class="toolbar"><div><b>StudioMargin</b> <span class="muted">• Modello locale, senza salvataggio sul server</span></div><div class="right"><a class="link" href="index.html">Home</a><button type="button" onclick="window.print()">Stampa / Salva PDF</button></div></div>
+<div class="sheet"><div class="brand"><small>STUDIOMARGIN · MODELLO MODIFICABILE</small><h1>PREVENTIVO</h1></div>
+<div class="top"><div><strong>EMITTENTE</strong><div class="area" contenteditable="true">Nome professionista / società</div><div class="area" contenteditable="true">Indirizzo, CAP, città</div><div class="area" contenteditable="true">P.IVA / contatti</div></div><div><strong>CLIENTE</strong><div class="area" contenteditable="true">Ragione sociale / referente</div><div class="area" contenteditable="true">Indirizzo</div><div class="area" contenteditable="true">P.IVA / email</div></div></div>
+<div class="meta"><div><label>N. PREVENTIVO</label><input aria-label="Numero preventivo" value="PREV-001"></div><div><label>DATA</label><input aria-label="Data preventivo" type="date" id="date"></div></div>
+<h2>Oggetto</h2><div class="area" contenteditable="true" style="min-height:35px">Descrizione del lavoro e principali deliverable.</div>
+<h2>Dettaglio prestazioni</h2>
+<table><thead><tr><th style="width:39%">Descrizione</th><th style="width:9%">Qtà</th><th style="width:9%">UM</th><th style="width:16%">Prezzo (€)</th><th style="width:12%">Sconto %</th><th style="width:15%;text-align:right">Importo</th></tr></thead><tbody id="lines"></tbody></table>
+<div class="totals"><div>Subtotale (€)</div><div class="right" id="sub">—</div><div>Rivalsa integrativa, se dovuta (%) <input id="fee" type="number" min="0" max="100" step=".1" value="0"></div><div class="right" id="feeval">—</div><div>IVA, se dovuta (%) <input id="vat" type="number" min="0" max="100" step=".1" value="0"></div><div class="right" id="vatval">—</div><strong>TOTALE (€)</strong><strong class="right" id="grand">—</strong></div>
+<h2>Note e condizioni</h2><div class="notes" contenteditable="true">Validità offerta: 30 giorni. Modalità di pagamento, consegna, esclusioni e revisioni da definire.</div>
+<div class="warn">Modello dimostrativo: prima di inviare verificare contenuti, importi, oneri, IVA e inquadramento fiscale. I dati restano nel browser e non vengono salvati.</div>
+<div class="footer"><div>StudioMargin · Preventivo commerciale</div><div>Documento personalizzabile · Nessun incasso attivo</div></div></div>
+<script>
+(function(){
+const money=n=>new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR'}).format(n);
+const lines=document.getElementById('lines');
+for(let i=0;i<8;i++){
+  const tr=document.createElement('tr');
+  tr.innerHTML='<td class="desc"><input aria-label="Descrizione '+(i+1)+'" placeholder="Prestazione"></td><td class="qty"><input type="number" min="0" step=".1" value="'+(i===0?1:0)+'"></td><td class="unit"><input value="cad"></td><td class="price"><input type="number" min="0" step=".01" value="0"></td><td class="disc"><input type="number" min="0" max="100" step=".1" value="0"></td><td class="amount"><span>—</span></td>';
+  lines.appendChild(tr);
+}
+function calc(){
+let total=0, valid=true;
+for(const tr of lines.querySelectorAll('tr')){
+  const q=Number(tr.children[1].firstChild.value),p=Number(tr.children[3].firstChild.value),d=Number(tr.children[4].firstChild.value);
+  const ok=[q,p,d].every(Number.isFinite)&&q>=0&&p>=0&&d>=0&&d<=100;
+  const amount=ok?q*p*(1-d/100):NaN;
+  tr.children[5].firstChild.textContent=ok?money(amount):'ERR';
+  if(!ok)valid=false;else total+=amount;
+}
+const fee=Number(document.getElementById('fee').value),vat=Number(document.getElementById('vat').value);
+if(!valid||!Number.isFinite(fee)||!Number.isFinite(vat)||fee<0||vat<0||fee>100||vat>100){for(const k of ['sub','feeval','vatval','grand'])document.getElementById(k).textContent='ERR';return}
+const f=total*fee/100, v=(total+f)*vat/100;
+document.getElementById('sub').textContent=money(total);
+document.getElementById('feeval').textContent=money(f);
+document.getElementById('vatval').textContent=money(v);
+document.getElementById('grand').textContent=money(total+f+v);
+}
+document.querySelectorAll('input').forEach(el=>el.addEventListener('input',calc));
+document.getElementById('date').value=new Date().toISOString().slice(0,10);
+calc();
+})();
+</script></body></html>
