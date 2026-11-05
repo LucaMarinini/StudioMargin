@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="description" content="Simula costo orario e margine di un preventivo con StudioMargin, senza inviare dati."><title>Calcolatore gratuito | StudioMargin</title>
+<style>
+:root{--ink:#123330;--teal:#127b70;--pale:#f4f7f3;--edge:#dce7e1;--mint:#b2ead8}*{box-sizing:border-box}
+body{margin:0;background:var(--pale);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:#0b292b;color:#fff}header .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:22px;padding-bottom:22px}header a{color:white;text-decoration:none}header strong{font-size:22px}.wrap{max-width:1070px;margin:auto;padding:0 22px}
+main{padding:42px 0 80px}h1{font-size:clamp(34px,4vw,48px);line-height:1.14;letter-spacing:-.045em;margin:8px 0 12px}h2{font-size:24px;letter-spacing:-.025em;margin:0 0 20px}p{max-width:72ch}.muted{color:#526d67}.eyebrow{text-transform:uppercase;letter-spacing:.12em;color:var(--teal);font-size:12px;font-weight:700}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px}.panel{background:#fff;border:1px solid var(--edge);padding:25px;border-radius:14px}
+.field{display:flex;flex-direction:column;gap:5px;margin:0 0 15px}.field label{font-size:13px;font-weight:650}.field input{font-size:17px;border:1px solid #aac5bb;border-radius:8px;padding:10px 12px;width:100%;background:white;color:#173b34}
+.field small{color:#667d77}.out{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:#eaf5ef;padding:15px;border-radius:10px}.stat span{display:block;font-size:12px;color:#48695e}.stat strong{font-size:clamp(20px,2.2vw,29px);letter-spacing:-.035em}
+.err{color:#a32316;font-size:13px;min-height:1em;margin-top:10px}.notice{border-left:4px solid #17816e;padding:10px 14px;background:#e4f1ea;font-size:13px;margin:24px 0}.actions{margin-top:26px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}.btn{display:inline-block;padding:13px 20px;border-radius:10px;background:#0b292b;color:white;text-decoration:none;font-weight:700}.sub{font-size:13px}
+footer{background:#0b292b;color:#cde1d8;padding:24px 0;font-size:13px}footer a{color:white}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.panel{padding:18px}.out{grid-template-columns:1fr 1fr}}
+</style></head>
+<body><header><div class="wrap"><strong>StudioMargin</strong><a href="index.html">← Torna al sito</a></div></header>
+<main class="wrap"><div class="eyebrow">Demo gratuita · Nessun dato inviato</div><h1>Quanto dovresti chiedere per un'ora di lavoro?</h1><p class="muted">Modifica le ipotesi e confronta il costo pieno con una tariffa coerente con il margine obiettivo. Poi simula un preventivo. Il calcolo avviene esclusivamente nel tuo browser: non salviamo i dati.</p>
+<div class="layout"><section class="panel"><h2>1. Il tuo costo orario</h2>
+<div class="field"><label for="hours">Ore annue effettivamente fatturabili</label><input id="hours" type="number" min="1" max="8760" step="1" value="960"><small>Ore vendibili, non ore lavorate complessive</small></div>
+<div class="field"><label for="comp">Compenso annuo obiettivo (€)</label><input id="comp" type="number" min="0" step="100" value="26000"></div>
+<div class="field"><label for="fixed">Costi fissi annui (€)</label><input id="fixed" type="number" min="0" step="100" value="12000"></div>
+<div class="field"><label for="other">Altre spese annue (€)</label><input id="other" type="number" min="0" step="100" value="3000"></div>
+<div class="field"><label for="variable">Costi variabili per ora (€)</label><input id="variable" type="number" min="0" step="1" value="0"></div>
+<div class="field"><label for="margin">Margine desiderato sul prezzo (%)</label><input id="margin" type="number" min="0" max="95" step="1" value="20"></div>
+<div class="out" aria-live="polite"><div class="stat"><span>Costo pieno / ora</span><strong id="cost">—</strong></div><div class="stat"><span>Tariffa suggerita / ora</span><strong id="rate">—</strong></div></div>
+<p id="e1" class="err" role="status"></p></section>
+<section class="panel"><h2>2. Simula un preventivo</h2>
+<div class="field"><label for="projectHours">Ore richieste dal lavoro</label><input id="projectHours" type="number" min="0" max="100000" step="1" value="18"></div>
+<div class="field"><label for="outside">Spese esterne (€)</label><input id="outside" type="number" min="0" step="10" value="0"></div>
+<div class="field"><label for="cont">Imprevisti / maggiorazione sul prezzo (%)</label><input id="cont" type="number" min="0" max="100" step="1" value="0"></div>
+<div class="out" aria-live="polite"><div class="stat"><span>Prezzo stimato</span><strong id="price">—</strong></div><div class="stat"><span>Costo pieno stimato</span><strong id="projCost">—</strong></div><div class="stat"><span>Margine stimato (€)</span><strong id="gain">—</strong></div><div class="stat"><span>Margine sul prezzo (%)</span><strong id="gainPct">—</strong></div></div>
+<p id="e2" class="err" role="status"></p>
+<div class="notice">Esempio gestionale: non include automaticamente imposte, IVA, contributi professionali, insoluti o variazioni del carico di lavoro. Gli imprevisti sono una maggiorazione del prezzo, non una riserva di costo. Non è un preventivo pronto per l'invio.</div>
+<p class="muted" style="font-size:14px">Questa è una dimostrazione limitata. Il file Excel StudioMargin include anche preventivi multipli, pianificazione di cassa su 12 mesi e cruscotto riepilogativo.</p></section></div>
+<div class="actions"><a class="btn" href="mailto:razrmarinini@gmail.com?subject=StudioMargin%20-%20feedback%20demo&body=Buongiorno%2C%20ho%20provato%20la%20demo.%20Mi%20sarebbe%20utile%20se%20...">Lascia un feedback</a><a href="privacy.html">Come trattiamo i dati</a></div>
+</main><footer><div class="wrap">StudioMargin · Prelancio senza acquisti · <a href="index.html">Home</a> · <a href="privacy.html">Privacy</a></div></footer>
+<script>
+(function(){
+  const names=['hours','comp','fixed','other','variable','margin','projectHours','outside','cont'], els=Object.fromEntries(names.map(x=>[x,document.getElementById(x)]));
+  const euro = n=>new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR',maximumFractionDigits:2}).format(n);
+  const pct = n=>new Intl.NumberFormat('it-IT',{style:'percent',maximumFractionDigits:1}).format(n);
+  function output(id,value){document.getElementById(id).textContent=value}
+  function clear(){for(const id of ['cost','rate','price','projCost','gain','gainPct'])output(id,'—')}
+  function recalc(){
+    let v={};for(const k of names){v[k]=Number(els[k].value);if(els[k].value===''||!Number.isFinite(v[k])||v[k]<0){clear();output('e1','Inserisci valori numerici validi e non negativi.');return}}
+    if(v.hours<=0||v.hours>8760||v.margin>=100||v.margin>95||v.projectHours>100000||v.cont>100){clear();output('e1','Controlla ore e percentuali inserite.');return}
+    output('e1','');output('e2','');
+    const full=(v.comp+v.fixed+v.other)/v.hours+v.variable;
+    const suggested=Math.ceil((full/(1-v.margin/100))/5)*5;
+    const price=Math.max(0,(v.projectHours*suggested+v.outside)*(1+v.cont/100));
+    const total=v.projectHours*full+v.outside, gain=price-total;
+    output('cost',euro(full));output('rate',euro(suggested));
+    output('price',euro(price));output('projCost',euro(total));output('gain',euro(gain));output('gainPct',price>0?pct(gain/price):'n.d.');
+  }
+  names.forEach(k=>els[k].addEventListener('input',recalc));recalc();
+})();
+</script></body></html>
