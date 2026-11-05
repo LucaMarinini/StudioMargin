@@ -25,6 +25,9 @@ Novità: 2 grafici nativi Excel, modello di preventivo, 12 controlli di coerenza
 - Checkout, vendite e promozione attiva **non abilitati** finché non è chiarita la situazione fiscale e previdenziale, incluse le condizioni Inarcassa.
 - Nessun sistema di tracciamento o invio automatico di dati dai simulatori.
 
+## Distribuzione esterna — decisione del 05/11/2026
+Su indicazione del commercialista si valutano piattaforme Merchant of Record per la futura distribuzione, senza utilizzare la partita IVA professionale nel percorso iniziale. Si tratta di un orientamento da precisare: la piattaforma esterna non risolve automaticamente fiscalità del percettore o compatibilità previdenziale con Inarcassa. Checkout e pagamenti restano disabilitati. Piano e fonti: [docs/PIANO_DISTRIBUZIONE_ESTERNA_2026-11-05.md](docs/PIANO_DISTRIBUZIONE_ESTERNA_2026-11-05.md).
+
 ## Stato della sfida da 1 €
 Capitale iniziale previsto: 1,00 € (ancora da versare).
 Ricavi verificati: 0,00 €.
