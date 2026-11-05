@@ -2,6 +2,15 @@
 
 > Documento di preparazione commerciale. Nessun link di acquisto, prezzo definitivo, preordine o checkout. Le prestazioni riportate vanno confrontate con il workbook finale prima della pubblicazione.
 
+## Stato integrazione Gumroad (verificato 05/11/2026)
+- Connettore MCP Gumroad: **operativo** in ChatGPT, verificato tramite lettura account e catalogo.
+- Storefront dell'account verificato tramite connettore: https://razrmarin.gumroad.com
+- Valuta predefinita dell'account: **USD**. Per il lancio in EUR scegliere esplicitamente la valuta del prodotto, senza affidarsi al default.
+- Catalogo al momento del controllo: **0 prodotti**. Non è stato creato alcun prodotto, neppure in bozza.
+- Categoria Gumroad proposta (esistente): `business-and-money/accounting` (Accounting); alternativa `business-and-money/entrepreneurship/resources` (Resources).
+- **Blocco creazione bozza tramite MCP:** prezzo non ancora confermato dal titolare; il connettore richiede conferma di nome e prezzo anche per una bozza non acquistabile. Titolo proposto qui sotto, prezzo da decidere prima dell'azione.
+- Nessun checkout, prodotto pubblicato, file premium caricato o incasso attivato.
+
 ## Titolo proposto
 StudioMargin — Excel per tariffe, preventivi, margini e cassa
 
