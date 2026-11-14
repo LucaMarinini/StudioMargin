@@ -32,7 +32,7 @@ Il workbook è stato sottoposto a revisioni e controlli statici; restano da docu
 
 ## Sfida solidale indipendente
 
-StudioMargin è un esperimento di produzione di valore con AI: i proventi netti effettivamente disponibili, dopo commissioni, rimborsi e obblighi di legge, sono destinati a future donazioni documentate ad AISM. Non è un'iniziativa ufficiale o patrocinata dall'associazione; acquistare l'Excel non costituisce donazione diretta ad AISM. Il progetto usa un registro pubblico per distinguere crediti su Gumroad, cassa effettivamente accreditata e donazioni: [STATUS_PUBBLICO](docs/STATUS_PUBBLICO.md). I raddoppi si conteggiano solo dopo accrediti effettivi.
+StudioMargin è un esperimento di produzione di valore con AI e finalità solidale. Il promotore intende destinare il 100% dei proventi netti effettivamente disponibili, dopo commissioni, rimborsi e obblighi di legge, a future donazioni documentate. **Non è stato ancora confermato alcun ente beneficiario né alcun patrocinio.** L'acquisto del file Excel è una vendita di prodotto digitale, non una donazione e non attribuisce benefici fiscali all'acquirente. Il progetto usa un registro pubblico per distinguere crediti su Gumroad, cassa effettivamente accreditata e donazioni: [STATUS_PUBBLICO](docs/STATUS_PUBBLICO.md). I raddoppi si conteggiano solo dopo accrediti effettivi. La comunicazione promozionale sui social resta sospesa durante la definizione della destinazione benefica.
 
 ## Stato sperimentazione
 
